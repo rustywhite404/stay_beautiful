@@ -39,3 +39,4 @@ out/
 ### LOGS ###
 *.log
 *.gz
+rollingfile*
