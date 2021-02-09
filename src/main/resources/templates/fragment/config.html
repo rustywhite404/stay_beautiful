@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head th:fragment="configFragment">
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- 웹폰트 -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+        <!-- 폰트어썸 -->
+        <script src="https://kit.fontawesome.com/386395290f.js" crossorigin="anonymous"></script>
+
+        <!-- 공통으로 쓰이는 css파일-->
+        <link th:href="@{/css/common.css}" rel="stylesheet" type="text/css">
+        <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+        <!-- 사용자 CSS 영역이 들어감 -->
+        <th:block layout:fragment="css"></th:block>
+        <!-- 공통으로 쓰이는 js파일-->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <!-- 사용자 스크립트 영역이 들어감 -->
+        <th:block layout:fragment="script"></th:block>
+    </head>
+</html>
+

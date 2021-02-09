@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/default">
+
+<!-- 개별 스크립트 추가 -->
+<th:block layout:fragment="script">
+</th:block>
+
+<th:block layout:fragment="content">
+    <h1><i class="fas fa-jedi"></i> Login</h1>
+    <form action="" method="post">
+        <input type="text" name="id" placeholder="ID">
+        <input type="password" name="password" placeholder="PASSWORD">
+        <button type="submit" class="sweepButton">
+            <span class="hover"></span>
+            <span>SUBMIT</span>
+        </button>
+    </form>
+    <a th:href="@{/user/insertUser}">회원가입하기</a>
+    <a th:href="@{/}">메인으로</a>
+
+</th:block>
+</body>
+</html>

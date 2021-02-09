@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lagn="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>STAY BEAUTIFUL</title>
+    <!-- config fragment 사용 -->
+    <th:block th:replace="fragment/config :: configFragment" ></th:block>
+</head>
+<body>
+<!-- 공통 헤더-->
+<th:block th:replace="fragment/header :: headerFragment"></th:block>
+    <div id="wrapper">
+        <div id="blackSolid"></div>
+        <!-- 사이드바-->
+        <th:block th:replace="fragment/sidebar :: sidebarFragment"></th:block>
+        <div id="content-wrapper">
+            <!-- 본문-->
+            <th:block layout:fragment="content"></th:block>
+            <!-- 공통 하단-->
+            <th:block th:replace="fragment/footer :: footerFragment"></th:block>
+        </div>
+    </div>
+</body>
+</html>

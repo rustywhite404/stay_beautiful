@@ -1,0 +1,240 @@
+@CHARSET "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Roboto:ital,wght@0,300;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,700;0,800;1,200;1,300;1,400;1,500;1,700;1,800&display=swap');
+/* 전체 공통적용 */
+* {
+    margin: 0;
+    padding: 0;
+    border: 0 none transparent;
+    box-sizing: border-box;
+}
+html,body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+html,body,pre {
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 14px;
+    line-height: 22px;
+    color: #fff;
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    -webkit-font-smoothing: antialiased; /*-webkit-text-size-adjust:100%;*/
+}
+form,fieldset,p,figure {
+    word-break: normal;
+    word-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+}
+article,aside,hgroup,header,footer,figure,figcaption,nav,section {
+    display: block;
+}
+h1,h2,h3,h4,h5,h6,strong,th {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 700;
+    color: #fff;
+}
+ol,ul {
+    list-style: none;
+}
+a:link,a:visited,a:hover,a,active,a:focus {
+    text-decoration: none;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.65);
+}
+textarea {
+    resize: vertical;
+    font: inherit;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+}
+input,select {
+    color: inherit;
+    font: inherit;
+    vertical-align: middle;
+    box-sizing: border-box;
+    font-family: 'Noto Sans', sans-serif
+}
+table {
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+img,select,input,button {
+    vertical-align: middle;
+}
+/* 드래그 시 블러처리 */
+::selection {
+    color: transparent;
+    text-shadow: 0 0 2px #fff;
+    transition: all 250ms ease-in;
+}
+::-moz-selection {
+    color: transparent;
+    text-shadow: 0 0 2px #fff;
+    transition: all 250ms ease-in;
+}
+/* 버튼 css */
+input[type=text],input[type=password] {
+    font-size: 14px;
+    border: 1px solid #eee;
+    padding: 5px 7px;
+    margin: 5px 0;
+    color: #fff;
+    background-color: transparent;
+}
+input[type=button],input[type=submit] {
+    display: block;
+    width: 120px;
+    height: 38px;
+    border: 0;
+    border-radius: 3px;
+    color: #fff;
+    margin: 5px 0;
+    cursor: pointer;
+    background: #FC5C7D; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #6A82FB, #FC5C7D); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #6A82FB, #FC5C7D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+input[type=reset] {
+    width: 120px;
+    height: 32px;
+    background-color: #ccc;
+    color: #fff;
+    margin: 5px 0;
+}
+/* 버튼 css - Sweep */
+.sweepButton {
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    display: block;
+    width: 166px;
+    height: 38px;
+    margin: auto;
+    line-height: 38px;
+    border: 1px solid #fff;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-family: oswald;
+    background-color: transparent;
+}
+.sweepButton span {
+    position: relative;
+    transition: color 0.25s ease-out;
+    -webkit-transition: color 0.5s ease-out;
+    -moz-transition: color 0.5s ease-out;
+}
+.sweepButton:hover span {
+    color: lightblue;
+}
+.sweepButton .hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border: 1px solid transparent;
+    transform: scale(1, 0);
+    -webkit-transform: scale(1, 0);
+    -moz-transform: scale(1, 0);
+    -ms-transform: scale(1, 0);
+    transform-origin: center top;
+    -webkit-transform-origin: center top;
+    -moz-transform-origin: center top;
+    -ms-transform-origin: center top;
+    transition: all 0.2s ease-out;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+}
+.sweepButton:hover .hover {
+    transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    -moz-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
+}
+/* placeholder */
+::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: #fff;
+}
+::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #fff;
+}
+:-ms-input-placeholder {
+    /* IE 10+ */
+    color: rgba(255, 255, 255, 0.8);
+}
+:-moz-placeholder {
+    /* Firefox 18- */
+    color: #fff;
+}
+/* 자주 사용할 클래스 */
+.por {
+    position: relative;
+}
+.tl {
+    text-align: left !important;
+}
+.tr {
+    text-align: right !important;
+}
+.tc {
+    text-align: center !important;
+}
+.fl {
+    float: left !important;
+}
+.fr {
+    float: right !important;
+}
+.clear {
+    clear: both;
+}
+.vt {
+    vertical-align: top !important;
+}
+.vm {
+    vertical-align: middle !important;
+}
+.vtb {
+    vertical-align: text-bottom !important;
+}
+.dpi {
+    display: inline;
+}
+.dpb {
+    display: block;
+}
+.dpib {
+    display: inline-block;
+}
+.dpn {
+    display: none;
+}
+.clearFixed:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.blind {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    font-size: 0;
+}

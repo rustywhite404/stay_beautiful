@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.beautiful.stay.mapper.UserMapper">
+    <!-- 회원가입 -->
+    <insert id="insertUser">
+        INSERT INTO USER(ID, PASSWORD, NAME) VALUES (#{id}, #{password}, #{name});
+    </insert>
+
+    <!-- ID, PW 회원조회 -->
+    <select id="readWithIDPW" resultType="com.beautiful.stay.domain.UserVO">
+        select * from user where id = #{id} and password = #{password}
+    </select>
+
+    <!-- 전체 회원 조회-->
+    <select id="getUser" resultType="java.util.HashMap">
+        SELECT * FROM USER;
+    </select>
+
+
+</mapper>
