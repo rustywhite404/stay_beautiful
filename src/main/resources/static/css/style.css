@@ -10,3 +10,19 @@
 #sideBar{
     display:none;
 }
+
+#content-wrapper{
+    width:960px; margin:0 auto; padding:40px;
+}
+
+/* user/login */
+#login_box{width:220px; margin:25% auto;}
+#login_box h1{margin-bottom:10px; letter-spacing: 1px; font-size:21px;}
+#login_box a{font-size:12px;}
+#login_box a:hover{filter: blur(1px);}
+#login_box a:last-child{float:right;}
+#login_box a:last-child::after{clear:both;}
+
+/* user/join */
+#join_box{width:220px; margin:25% auto;}
+#join_box h1{margin-bottom:10px; letter-spacing: 1px; font-size:21px;}

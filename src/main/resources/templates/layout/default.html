@@ -7,20 +7,20 @@
     <meta charset="UTF-8" />
     <title>STAY BEAUTIFUL</title>
     <!-- config fragment 사용 -->
-    <th:block th:replace="fragment/config :: configFragment" ></th:block>
+    <th:block th:replace="fragment/config" ></th:block>
 </head>
 <body>
 <!-- 공통 헤더-->
-<th:block th:replace="fragment/header :: headerFragment"></th:block>
+<th:block th:replace="fragment/header"></th:block>
     <div id="wrapper">
         <div id="blackSolid"></div>
         <!-- 사이드바-->
-        <th:block th:replace="fragment/sidebar :: sidebarFragment"></th:block>
+        <th:block th:replace="fragment/sidebar"></th:block>
         <div id="content-wrapper">
             <!-- 본문-->
             <th:block layout:fragment="content"></th:block>
             <!-- 공통 하단-->
-            <th:block th:replace="fragment/footer :: footerFragment"></th:block>
+            <th:block th:replace="fragment/footer"></th:block>
         </div>
     </div>
 </body>

@@ -13,3 +13,7 @@ td, th {
 tr:nth-child(even) {
     background-color: #dddddd;
 }
+
+#main_menu_box{ width: 200px; margin:0 auto; padding:20px; text-align: center;}
+#main_menu_box ul li{margin:5px 0; transition: 4s;}
+#main_menu_box ul li a:hover{filter:blur(1px);}

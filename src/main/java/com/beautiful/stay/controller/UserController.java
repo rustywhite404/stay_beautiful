@@ -25,12 +25,12 @@ public class UserController {
     private Logger logger = LogManager.getLogger(UserController.class);
 
     // 회원가입 - 뷰
-    @GetMapping("/insertUser")
+    @GetMapping("/join")
     public void insertUserGet() throws Exception{
     }
 
     // 회원가입
-    @PostMapping("/insertUser")
+    @PostMapping("/join")
     public String insertUserPost(UserVO vo, HttpSession session) throws Exception{
         userService.insertUser(vo);
         return "redirect:/user/login";
@@ -55,11 +55,20 @@ public class UserController {
         // 정보가 있을 경우
         // 세션값 생성
         session.setAttribute("id", loginCheck.getId());
+        session.setAttribute("name", loginCheck.getName());
         logger.info("***"+loginCheck.getName()+" 님이 로그인 성공했습니다.");
 
         // 페이지 리다이렉트 이동 시 RedirectAttributes 객체 사용 정보 전달
         rttr.addFlashAttribute("userInfo", loginCheck);
 
+        return "redirect:/";
+    }
+
+    // 로그아웃
+    @GetMapping("/logout")
+    public String userLogoutGet(HttpSession session) throws Exception{
+        logger.info("*** 로그아웃합니다.");
+        session.invalidate();
         return "redirect:/";
     }
 
