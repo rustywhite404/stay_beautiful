@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.beautiful.stay.mapper.NoteMapper">
+    <!-- 새 글 쓰기 -->
+    <insert id="createNote">
+        INSERT INTO USER(SUBJECT, CONTENTS, WRITER, CATEGORY, DATE) VALUES (#{subject}, #{contents}, #{writer}, #{category}, now());
+    </insert>
+
+</mapper>
