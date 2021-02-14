@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/default">
+
+<!-- 개별 스크립트 추가 -->
+<th:block layout:fragment="script">
+</th:block>
+
+<th:block layout:fragment="content">
+    <div id="Note_list_box">
+        <h1>너무 시끄러운 고독</h1>
+        <div class="">
+            <span>전체</span>
+            <span>시</span>
+            <span>소설</span>
+            <span>수필</span>
+            <span>기타</span>
+        </div>
+        <div th:each="noteList: ${list}" class="note_list">
+
+            <div class="note_info fontNR">
+                <p>STAY BEAUTIFUL 210214</p>
+                <P>Written by.<span th:text="${noteList.writer}"></span></P>
+                <p>#TAG1, #TAG2</p>
+                <p>no.<span th:text="${noteList.bno}"></span></p>
+            </div>
+            <div class="note_subject">
+                <p th:text="${noteList.subject}">DON'T LEAVE ME</p>
+                <hr/>
+            </div>
+            <div class="note_contents fontNR">
+                <p th:text="${noteList.contents}"></p>
+            </div>
+            <div class="feat_box">M D</div>
+            <hr class="end_line" />
+        </div>
+        <div class="clearFixed"></div>
+        <div id="paging_box">
+            <ul>
+                <li>←</li>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>→</li>
+            </ul>
+        </div>
+    </div>
+</th:block>
+</body>
+</html>
