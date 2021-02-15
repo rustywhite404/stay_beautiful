@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
@@ -61,9 +62,16 @@ public class NoteController {
         List<NoteVO> list = null;
         list = noteService.listAll();
         model.addAttribute("list", list);
-        logger.info("***전체 글 출력:"+list);
     }
 
+    // 글 수정하기
+    @GetMapping(value = "/modify")
+    public String noteModifyGET(@RequestParam("bno") int bno, Model model) throws Exception{
+        logger.info("*** "+bno+"번 게시글을 수정합니다.");
+        NoteVO vo = noteService.read(bno);
+        model.addAttribute("note", vo);
+        return "/note/modify";
+    }
 
 
 

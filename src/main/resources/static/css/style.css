@@ -53,7 +53,7 @@
 /* note/list */
 #Note_list_box{width:800px; margin:10% auto 20% auto;}
 #Note_list_box span{display: inline-block; padding:5px 7px;}
-#Note_list_box span::after{content:""; border-right:2px solid rgba(255,255,255,0.4); padding-right:15px;}
+#Note_list_box .category span::after{content:""; border-right:2px solid rgba(255,255,255,0.4); padding-right:15px;}
 #Note_list_box span:last-of-type::after{content:""; clear:both;}
 .note_list ::after{clear: both;}
 .note_list ul{margin-top:30px;}
@@ -63,13 +63,16 @@
 .note_list li:nth-of-type(3){width:20%;}
 .note_list li:last-of-type::after{content:""; clear: both;}
 
-.note_info{margin-top:20px;}
-.note_info p{line-height: 12px;}
+.note_info{margin-top:40px;}
+.note_info p{line-height: 14px; letter-spacing: 0.3px;}
 .note_subject{text-align: center;}
-.note_subject p{font-width:100; font-size:26px;}
+.note_subject p{font-size:26px;}
 .note_subject hr{height:1px; background:rgba(255,255,255,0.4); margin-top:25px;}
-.note_contents{font-size:17px; letter-spacing: 0.5px; line-height: 170%; padding:20px;}
+.note_contents{position: relative; font-size:16px; letter-spacing: 0.5px; line-height: 170%; padding:0 20px;}
 #Note_list_box .end_line{height:1px; background:rgba(255,255,255,1)}
+.feat_box{font-size:12px; transform: rotate(270deg); position:absolute; top:43%; right:-10%; }
+.feat_box a{color:rgba(255,255,255,0.6); transition:1s; }
+.feat_box a:hover{color:rgba(255,255,255,1);}
 
 /* paging */
 #paging_box{width:100%; margin:20px auto; text-align: center;}

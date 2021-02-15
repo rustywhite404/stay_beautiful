@@ -6,12 +6,17 @@
 <mapper namespace="com.beautiful.stay.mapper.NoteMapper">
     <!-- 새 글 쓰기 -->
     <insert id="createNote">
-        INSERT INTO NOTE(NICKNAME, SUBJECT, CONTENTS, WRITER, CATEGORY, TAG, DATE) VALUES (#{nickname}, #{subject}, #{contents}, #{writer}, #{category}, #{tag}, now());
+        INSERT INTO NOTE(NICKNAME, SUBJECT, CONTENTS, WRITER, CATEGORY, TAG, DATE) VALUES (#{nickname}, #{subject}, #{contents}, #{writer}, #{category}, #{tag}, now())
     </insert>
 
     <!-- 전체글 보기-->
     <select id="listNote" resultType="com.beautiful.stay.domain.NoteVO">
-        SELECT * FROM NOTE ORDER BY BNO DESC;
+        SELECT * FROM NOTE ORDER BY BNO DESC
+    </select>
+
+    <!-- 글 번호로 글 내용 조회 -->
+    <select id="readNote" resultType="com.beautiful.stay.domain.NoteVO">
+        SELECT * FROM NOTE WHERE BNO = #{bno}
     </select>
 
 </mapper>

@@ -28,4 +28,10 @@ public class NoteServiceImpl implements NoteService{
     public List<NoteVO> listAll() throws Exception {
         return noteRepository.listAll();
     }
+
+    // 글 번호로 내용 조회
+    @Override
+    public NoteVO read(int bno) throws Exception {
+        return noteRepository.read(bno);
+    }
 }

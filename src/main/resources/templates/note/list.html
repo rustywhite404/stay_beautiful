@@ -10,7 +10,7 @@
 <th:block layout:fragment="content">
     <div id="Note_list_box">
         <h1>너무 시끄러운 고독</h1>
-        <div class="">
+        <div class="category">
             <span>전체</span>
             <span>시</span>
             <span>소설</span>
@@ -25,14 +25,14 @@
                 <p>#TAG1, #TAG2</p>
                 <p>no.<span th:text="${noteList.bno}"></span></p>
             </div>
-            <div class="note_subject">
-                <p th:text="${noteList.subject}">DON'T LEAVE ME</p>
+            <div class="note_subject fontNR">
+                <p th:text="${noteList.subject}"></p>
                 <hr/>
             </div>
-            <div class="note_contents fontNR">
+            <div class="note_contents fontNR" style="white-space: pre-line;">
                 <p th:text="${noteList.contents}"></p>
+                <div class="feat_box"><a th:href="@{/note/modify(bno=${noteList.bno})}">Modify</a> / <a th:href="@{/note/delete(bno=${noteList.bno})}">Delete</a></div>
             </div>
-            <div class="feat_box">M D</div>
             <hr class="end_line" />
         </div>
         <div class="clearFixed"></div>

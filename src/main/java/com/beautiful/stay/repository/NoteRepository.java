@@ -12,4 +12,7 @@ public interface NoteRepository {
     // 게시판 글 목록보기
     List<NoteVO> listAll() throws Exception;
 
+    // 글 번호로 내용 조회 R
+    NoteVO read(int bno) throws Exception;
+
 }

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/default">
+
+<!-- 개별 스크립트 추가 -->
+<th:block layout:fragment="script">
+    <script>
+        <!-- textarea 글자 수에 따라 자동으로 넓이 변경 -->
+        $(document).ready(function() {
+            $('.wrap').on( 'keyup', 'textarea', function (e){
+                $(this).css('height', 'auto' );
+                $(this).height( this.scrollHeight );
+            });
+            $('.wrap').find( 'textarea' ).keyup();
+        });
+    </script>
+</th:block>
+
+<th:block layout:fragment="content">
+    <div id="Note_create_box">
+        <h1>STAY BEAUTIFUL</h1>
+        <form action="" method="post">
+            <select name="category">
+                <option th:selected="${note.category}=='poem'" value="poem">시</option>
+                <option th:selected="${note.category}=='novel'" value="novel">소설</option>
+                <option th:selected="${note.category}=='note'" value="note">수필</option>
+                <option th:selected="${note.category}=='etc'" value="etc">그 외</option>
+
+            </select>
+            <input type="text" name="subject" class="subject" th:value="${note.subject}">
+            <input type="hidden" th:value="${name}" name="nickname">
+            <input type="text" name="tag" placeholder="tag">
+            <input type="text" name="writer" th:value="${note.writer}" placeholder="Writer">
+            <div class="wrap">
+                <textarea name="contents" th:value="${note.contents}" th:text="${note.contents}"></textarea>
+            </div>
+            <button type="submit" class="sweepButton mgt10">
+                <span class="hover"></span>
+                <span>SUBMIT</span>
+            </button>
+            <div class="back_link">
+                <a th:href="@{/}">GO TO BACK</a>
+            </div>
+        </form>
+    </div>
+</th:block>
+</body>
+</html>

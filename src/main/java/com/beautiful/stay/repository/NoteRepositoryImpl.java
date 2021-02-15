@@ -27,5 +27,11 @@ public class NoteRepositoryImpl implements NoteRepository{
         return sqlSession.selectList(NAMESPACE+".listNote");
     }
 
+    // 글 번호로 내용 조회하기
+    @Override
+    public NoteVO read(int bno) throws Exception {
+        return sqlSession.selectOne(NAMESPACE+".readNote", bno);
+    }
+
 
 }
