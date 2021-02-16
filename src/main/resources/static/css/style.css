@@ -74,7 +74,13 @@
 .feat_box a{color:rgba(255,255,255,0.6); transition:1s; }
 .feat_box a:hover{color:rgba(255,255,255,1);}
 
+/* create button */
+#creat_button{position: fixed; bottom:5%; right:14%; letter-spacing: 3px; font-size:30px; }
+#creat_button a{transition:1.5s; color:rgba(255,255,255,0.3);}
+#creat_button a:hover{color:#fff;}
+
 /* paging */
 #paging_box{width:100%; margin:20px auto; text-align: center;}
 #paging_box ul{display: inline-block; margin: 0 auto;}
 #paging_box ul li{float:left; padding:0 6px;}
+

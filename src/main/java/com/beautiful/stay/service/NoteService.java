@@ -15,4 +15,10 @@ public interface NoteService {
     // 글 번호로 해당 글 조회
     NoteVO read(int bno) throws Exception;
 
+    // 글 수정하기
+    void modify(NoteVO vo) throws Exception;
+
+    // 글 삭제하기
+    void delete(int bno) throws Exception;
+
 }

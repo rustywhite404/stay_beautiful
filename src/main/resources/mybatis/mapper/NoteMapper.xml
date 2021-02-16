@@ -19,4 +19,16 @@
         SELECT * FROM NOTE WHERE BNO = #{bno}
     </select>
 
+    <!-- 글 수정하기-->
+    <update id="modifyNote">
+        UPDATE NOTE
+        SET SUBJECT = #{subject}, CONTENTS = #{contents}, WRITER = #{writer}, CATEGORY = #{category}, TAG = #{tag}
+        WHERE BNO = #{bno}
+    </update>
+
+    <!-- 글 삭제하기-->
+    <delete id="deleteNote">
+        DELETE FROM NOTE WHERE BNO = #{bno}
+    </delete>
+
 </mapper>

@@ -73,6 +73,21 @@ public class NoteController {
         return "/note/modify";
     }
 
+    @PostMapping(value="/modify")
+    public String noteModifyPOST(NoteVO vo) throws Exception{
+        noteService.modify(vo);
+        logger.info("*** 게시글을 성공적으로 수정했습니다.");
+        return "redirect:/note/list";
+    }
+
+    // 글 삭제하기
+    @GetMapping(value="delete")
+    public String noteModifyGET(int bno) throws Exception{
+        logger.info("*** "+bno+"번 게시글을 삭제합니다.");
+        noteService.delete(bno);
+        logger.info("*** "+bno+"번 게시글 삭제를 완료했습니다.");
+        return "redirect:/note/list";
+    }
 
 
 }

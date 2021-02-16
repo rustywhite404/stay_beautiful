@@ -33,5 +33,17 @@ public class NoteRepositoryImpl implements NoteRepository{
         return sqlSession.selectOne(NAMESPACE+".readNote", bno);
     }
 
+    // 글 내용 수정
+    @Override
+    public void modify(NoteVO vo) throws Exception {
+        sqlSession.update(NAMESPACE+".modifyNote", vo);
+    }
+
+    // 글 내용 삭제
+    @Override
+    public void delete(int bno) throws Exception {
+        sqlSession.delete(NAMESPACE+".deleteNote",bno);
+    }
+
 
 }
