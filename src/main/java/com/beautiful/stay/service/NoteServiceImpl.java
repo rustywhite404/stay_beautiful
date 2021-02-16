@@ -34,4 +34,16 @@ public class NoteServiceImpl implements NoteService{
     public NoteVO read(int bno) throws Exception {
         return noteRepository.read(bno);
     }
+
+    // 글 내용 수정
+    @Override
+    public void modify(NoteVO vo) throws Exception {
+        noteRepository.modify(vo);
+    }
+
+    // 글 내용 삭제
+    @Override
+    public void delete(int bno) throws Exception {
+        noteRepository.delete(bno);
+    }
 }
