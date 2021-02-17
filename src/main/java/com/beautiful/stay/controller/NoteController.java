@@ -36,7 +36,7 @@ public class NoteController {
 
         if(name==null){
             rttr.addFlashAttribute("msg","nameNull");
-            return "redirect:/note/list";
+            return "redirect:/user/login";
         }
 
         // 세션에서 넘어온 닉네임 뷰페이지에도 전달
@@ -89,5 +89,13 @@ public class NoteController {
         return "redirect:/note/list";
     }
 
+    // 카테고리별 글 보기
+    @GetMapping(value="category")
+    public void categoryReadGET(@RequestParam("type") String category, Model model) throws Exception{
+        logger.info("*** "+category+" 카테고리에 해당하는 글을 조회합니다.");
+        List<NoteVO> list = noteService.categoryRead(category);
+        logger.info("카테고리 글 전체 :"+list);
+        model.addAttribute("list", list);
+    }
 
 }

@@ -16,9 +16,9 @@
         <div class="category">
             <span><a th:href="@{/note/list}">전체</a></span>
             <span><a th:href="@{/note/category(type=poem)}">시</a></span>
-            <span><a th:href="@{/note/category(type=novel)}">소설</a></span>
-            <span><a th:href="@{/note/category(type=note)}">수필</a></span>
-            <span><a th:href="@{/note/category(type=etc)}">기타</a></span>
+            <span>소설</span>
+            <span>수필</span>
+            <span>기타</span>
         </div>
         <div th:each="noteList: ${list}" class="note_list">
 

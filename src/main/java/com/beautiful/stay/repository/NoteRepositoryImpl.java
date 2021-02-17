@@ -45,5 +45,11 @@ public class NoteRepositoryImpl implements NoteRepository{
         sqlSession.delete(NAMESPACE+".deleteNote",bno);
     }
 
+    // 카테고리별 글 보기
+    @Override
+    public List<NoteVO> categoryRead(String category) throws Exception {
+        return sqlSession.selectList(NAMESPACE+".categoryNote", category);
+    }
+
 
 }

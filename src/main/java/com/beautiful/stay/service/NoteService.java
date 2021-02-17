@@ -21,4 +21,7 @@ public interface NoteService {
     // 글 삭제하기
     void delete(int bno) throws Exception;
 
+    // 카테고리별 글 보기
+    List<NoteVO> categoryRead(String category) throws Exception;
+
 }

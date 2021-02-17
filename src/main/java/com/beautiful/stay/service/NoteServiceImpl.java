@@ -46,4 +46,13 @@ public class NoteServiceImpl implements NoteService{
     public void delete(int bno) throws Exception {
         noteRepository.delete(bno);
     }
+
+    // 카테고리별 글 보기
+    @Override
+    public List<NoteVO> categoryRead(String category) throws Exception {
+        return noteRepository.categoryRead(category);
+    }
+
+
+
 }

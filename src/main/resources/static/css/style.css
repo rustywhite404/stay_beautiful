@@ -52,6 +52,7 @@
 
 /* note/list */
 #Note_list_box{width:800px; margin:10% auto 20% auto;}
+#Note_list_box h1{font-family: 'ChosunSm'; font-weight:100; margin-bottom:7px;}
 #Note_list_box span{display: inline-block; padding:5px 7px;}
 #Note_list_box .category span::after{content:""; border-right:2px solid rgba(255,255,255,0.4); padding-right:15px;}
 #Note_list_box span:last-of-type::after{content:""; clear:both;}
