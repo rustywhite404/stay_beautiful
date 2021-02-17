@@ -33,7 +33,7 @@
 
     <!-- 카테고리명에 해당하는 글만 보기-->
     <select id="categoryNote" resultType="com.beautiful.stay.domain.NoteVO">
-        SELECT * FROM NOTE WHERE CATEGORY = #{category}
+        SELECT * FROM NOTE WHERE CATEGORY = #{category} ORDER BY BNO DESC
     </select>
 
 
