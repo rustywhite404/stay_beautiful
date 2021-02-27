@@ -24,4 +24,13 @@ public interface NoteService {
     // 카테고리별 글 보기
     List<NoteVO> categoryRead(String category) throws Exception;
 
+    // 게시물 총 갯수 + 검색 적용
+    int searchCount(String keyword) throws Exception;
+
+    // 게시물 목록 + 페이징 + 검색
+    List<NoteVO> listPageSearch(int displayPost, int postNum, String keyword) throws Exception;
+
+    // 게시물 목록 + 페이징
+    List<NoteVO> noteBoardList(String board_name, int startIndex, int pageSize) throws Exception;
+
 }

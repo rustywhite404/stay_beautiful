@@ -43,6 +43,12 @@ public class UserServiceImpl implements UserService{
         return returnVO;
     }
 
+    @Override
+    public UserVO findUser(String id) throws Exception {
+        return userRepository.findUser(id);
+    }
+
+
     // 회원 전체 조회
     @Override
     public List<Map<String, Object>> getUser() throws Exception {

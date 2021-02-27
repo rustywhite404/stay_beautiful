@@ -1,6 +1,8 @@
 package com.beautiful.stay.controller;
 
 import com.beautiful.stay.domain.NoteVO;
+import com.beautiful.stay.domain.PageVO;
+import com.beautiful.stay.domain.Pagination;
 import com.beautiful.stay.service.NoteService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -54,15 +56,52 @@ public class NoteController {
         return "redirect:/note/list";
     }
 
-    // 글 목록보기
-    @GetMapping(value="/list")
-    void noteListGET(Model model)throws Exception{
-        logger.info("***글 목록을 조회합니다.");
+    // 글 목록보기 + 페이징 + 검색 ( 백업)
+    @GetMapping(value="/list222")
+    void noteListGET(Model model, @RequestParam(value = "num", required = false, defaultValue = "1") int num,
+                     @RequestParam(value = "keyword", required = false, defaultValue ="") String keyword)throws Exception{
+//        logger.info("***글 목록을 조회합니다.");
+//        List<NoteVO> list = null;
+//        list = noteService.listAll();
+//        model.addAttribute("list", list);
+        logger.info("*** 페이징 처리가 끝난 게시물 목록 조회");
 
+        // ****** 페이징 처리
+        PageVO page = new PageVO();
+        page.setNum(num);
+        page.setCount(noteService.searchCount(keyword));
+
+        // 검색어 받아오기
+        page.setKeyword(keyword);
+
+        // 게시물 목록 + 페이징 + 검색
         List<NoteVO> list = null;
-        list = noteService.listAll();
+        list = noteService.listPageSearch(page.getDisplayPost(), page.getPostNum(), keyword);
         model.addAttribute("list", list);
+        model.addAttribute("page", page);
+        model.addAttribute("select", num);
+
+        logger.info("*** 총 게시물:"+list);
+
     }
+
+    @GetMapping(value = "/list")
+    public void noteListSearchGET(Model model, @RequestParam(defaultValue = "1")int page, @RequestParam(value = "keyword", required = false, defaultValue ="")String keyword) throws Exception { // 값이 없을 때 1로 처음에 받아줌
+
+        String board_name = "note"; // 게시판 이름
+        int totalListCnt = noteService.searchCount(keyword); // 전체 글 수
+        Pagination pagination = new Pagination(totalListCnt, page); // 페이지네이션 객체 생성 후 전체 글 수, page 수 입력
+
+        int startIndex = pagination.getStartIndex(); // sql 검색 처음 시작 인덱스
+        int pageSize = pagination.getPageSize(); // 페이지 수
+        logger.info("*** 전체 글 수:"+pagination.getTotalListCnt()+" *** 현재 페이지 :"+pagination.getPage()+"***시작페이지 :" + pagination.getStartPage()+"***끝 페이지:"+pagination.getEndPage());
+
+        List<NoteVO> boardList = noteService.noteBoardList(board_name, startIndex, pageSize);
+        model.addAttribute("list", boardList); // List형 board를 뷰에 보냄
+        model.addAttribute("pagination", pagination);
+
+    }
+
 
     // 글 수정하기
     @GetMapping(value = "/modify")

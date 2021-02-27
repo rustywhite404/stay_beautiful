@@ -5,6 +5,8 @@ import com.beautiful.stay.service.UserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +24,14 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    BCryptPasswordEncoder passwordEncoder;
+
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
+
     private Logger logger = LogManager.getLogger(UserController.class);
 
     // 회원가입 - 뷰
@@ -32,6 +42,10 @@ public class UserController {
     // 회원가입
     @PostMapping("/join")
     public String insertUserPost(UserVO vo, HttpSession session) throws Exception{
+
+        String inputPass = vo.getPassword();
+        String pwd = passwordEncoder.encode(inputPass);
+        vo.setPassword(pwd);
         userService.insertUser(vo);
         return "redirect:/user/login";
     }
@@ -46,21 +60,16 @@ public class UserController {
     public String userLoginPost(UserVO vo, HttpSession session, RedirectAttributes rttr) throws Exception{
         logger.info("*** 회원 로그인을 시도합니다.");
         logger.info("*** 전달받은 정보 확인:"+vo);
-        UserVO loginCheck = userService.loginUser(vo);
-        logger.info("*** 결과 조회:"+loginCheck);
-        // 해당 결과에 따라 페이지 이동 제어
-        if(loginCheck == null){ // 해당 정보가 없을 경우 -> login 페이지로
-            return "redirect:/user/login";
+
+        session.getAttribute("user");
+        UserVO login = userService.loginUser(vo);
+        boolean pwdMatch = passwordEncoder.matches(vo.getPassword(), login.getPassword());
+        if(login != null && pwdMatch == true){
+            session.setAttribute("member", login);
+        }else{
+            session.setAttribute("member", null);
+            rttr.addFlashAttribute("msg", false);
         }
-        // 정보가 있을 경우
-        // 세션값 생성
-        session.setAttribute("id", loginCheck.getId());
-        session.setAttribute("name", loginCheck.getName());
-        logger.info("***"+loginCheck.getName()+" 님이 로그인 성공했습니다.");
-
-        // 페이지 리다이렉트 이동 시 RedirectAttributes 객체 사용 정보 전달
-        rttr.addFlashAttribute("userInfo", loginCheck);
-
         return "redirect:/";
     }
 

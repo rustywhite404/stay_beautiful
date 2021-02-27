@@ -5,6 +5,7 @@
     background-size: cover;
     background-position: center center;
     background-image: url("/img/mainBg2.jpg");
+    background-attachment: fixed;
 }
 
 #sideBar{
@@ -82,6 +83,5 @@
 
 /* paging */
 #paging_box{width:100%; margin:20px auto; text-align: center;}
-#paging_box ul{display: inline-block; margin: 0 auto;}
-#paging_box ul li{float:left; padding:0 6px;}
-
+#paging_box a{margin:0 7px;}
+.p_active{color: rgba(255,255,255,0.6) !important;}

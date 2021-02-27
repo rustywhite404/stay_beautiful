@@ -39,16 +39,40 @@
             <hr class="end_line" />
         </div>
         <div class="clearFixed"></div>
+
+<!--            <div id="paging_box" th:with="start=${page.startPageNum}, end=${page.endPageNum}" >-->
+<!--                <ul>-->
+<!--                    <li th:if="${page.prev}">-->
+<!--                        <a th:href="@{/note/list(num=${page.startPageNum-1})}" th:text="'<'"></a>-->
+<!--                    </li>-->
+
+<!--                    <li th:each="page: ${#numbers.sequence(start, end)}">-->
+<!--                        <a th:text="${page}" th:href="@{/note/list(num=${page})}"></a>-->
+<!--                    </li>-->
+
+<!--                    <li th:if="${page.next}">-->
+<!--                        <a th:href="@{/note/list(num=${page.endPageNum+1})}" th:text="'>'"></a>-->
+<!--                    </li>-->
+<!--                </ul>-->
+
+<!--            </div>-->
+
         <div id="paging_box">
-            <ul>
-                <li>←</li>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
-                <li>→</li>
-            </ul>
+            <th:block th:if="${pagination.getTotalListCnt() != 0}">
+                <th:block th:if="${pagination.getPage() != 1}">
+                    <a th:href="@{/note/list(page=1)}">◆</a>
+                    <a th:href="@{/note/list(page=${pagination.getPreBlock()})}"> ←</a>
+                </th:block>
+            </th:block>
+                <a th:each="page:${#numbers.sequence(pagination.getStartPage(), pagination.getEndPage())}" th:href="@{/note/list(page=${page})}" th:text="${page}" th:class="${page==pagination.getPage()}?'p_active'">
+                </a>
+            <th:block th:if="${pagination.getTotalListCnt() != 0}">
+                <th:block th:if="${pagination.getPage() != pagination.totalPageCnt}">
+                    <a th:href="@{/note/list(page=${pagination.getNextBlock})}">→</a>
+                    <a th:href="@{/note/list(page=${pagination.getTotalPageCnt()})}">◆</a>
+
+                </th:block>
+            </th:block>
         </div>
     </div>
 </th:block>

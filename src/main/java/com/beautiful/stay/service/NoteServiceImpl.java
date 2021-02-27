@@ -53,6 +53,22 @@ public class NoteServiceImpl implements NoteService{
         return noteRepository.categoryRead(category);
     }
 
+    // 게시물 총 갯수 + 검색
+    @Override
+    public int searchCount(String keyword) throws Exception {
+        return noteRepository.searchCount(keyword);
+    }
+
+    // 게시물 목록 + 페이징 + 검색
+    @Override
+    public List<NoteVO> listPageSearch(int displayPost, int postNum, String keyword) throws Exception {
+        return noteRepository.listPageSearch(displayPost, postNum, keyword);
+    }
+
+    @Override
+    public List<NoteVO> noteBoardList(String board_name, int startIndex, int pageSize) throws Exception {
+        return noteRepository.noteBoardList(board_name, startIndex, pageSize);
+    }
 
 
 }

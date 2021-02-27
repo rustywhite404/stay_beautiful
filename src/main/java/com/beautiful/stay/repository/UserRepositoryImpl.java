@@ -35,6 +35,12 @@ public class UserRepositoryImpl implements UserRepository {
         return vo;
     }
 
+    // ID에 해당하는 정보 조회
+    @Override
+    public UserVO findUser(String id) throws Exception {
+        return sqlSession.selectOne(NAMESPACE+".findUser", id);
+    }
+
 
     // 회원가입
     @Override

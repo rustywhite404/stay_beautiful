@@ -13,6 +13,8 @@ public interface UserService {
     //로그인 체크
     public UserVO loginUser(UserVO vo);
 
+    // ID로 유저 조회
+    UserVO findUser(String id) throws Exception;
 
     //유저 전체 조회
     List<Map<String,Object>> getUser() throws Exception;
