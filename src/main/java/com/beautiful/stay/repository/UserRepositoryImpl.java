@@ -48,5 +48,12 @@ public class UserRepositoryImpl implements UserRepository {
         sqlSession.insert(NAMESPACE + ".insertUser", vo);
     }
 
+    // 아이디 중복체크
+    @Override
+    public int idCheck(String id) {
+        int cnt = sqlSession.selectOne(NAMESPACE+".idCheck", id);
+        return cnt;
+    }
+
 
 }

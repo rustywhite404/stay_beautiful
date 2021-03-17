@@ -19,4 +19,6 @@ public interface UserService {
     //유저 전체 조회
     List<Map<String,Object>> getUser() throws Exception;
 
+    // 아이디 중복확인
+    public int idCheck(String id);
 }

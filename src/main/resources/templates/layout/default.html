@@ -8,6 +8,7 @@
     <title>STAY BEAUTIFUL</title>
     <!-- config fragment 사용 -->
     <th:block th:replace="fragment/config" ></th:block>
+
 </head>
 <body>
 <!-- 공통 헤더-->
@@ -19,9 +20,12 @@
         <div id="content-wrapper">
             <!-- 본문-->
             <th:block layout:fragment="content"></th:block>
+
             <!-- 공통 하단-->
             <th:block th:replace="fragment/footer"></th:block>
         </div>
     </div>
 </body>
+<!-- 스크립트 -->
+<th:block layout:fragment="script"></th:block>
 </html>

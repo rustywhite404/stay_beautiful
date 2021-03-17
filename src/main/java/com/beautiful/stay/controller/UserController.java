@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
@@ -81,6 +79,16 @@ public class UserController {
         return "redirect:/";
     }
 
+    // 아이디 체크
+    @PostMapping("/idCheck")
+    @ResponseBody
+    public int idCheck(@RequestParam("id") String id){
+        logger.info("userIdCheck 진입");
+        logger.info("전달받은 id:"+id);
+        int cnt = userService.idCheck(id);
+        logger.info("확인 결과:"+cnt);
+        return cnt;
+    }
 
     // 전체회원조회
     @GetMapping("/test")

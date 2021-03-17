@@ -28,6 +28,9 @@
 #join_box{width:220px; margin:25% auto;}
 #join_box h1{margin-bottom:10px; letter-spacing: 1px; font-size:21px;}
 
+.id_ok{color:#fff; display: none;}
+.id_already{color:#6A82FB; display: none;}
+
 /* note/create */
 #Note_create_box{width:800px; margin:20% auto;}
 #Note_create_box input[type=text]{width:33%; border:transparent; border-bottom: 1px solid rgba(255,255,255,0.4);}

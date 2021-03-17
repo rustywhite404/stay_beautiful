@@ -19,6 +19,8 @@ public interface UserRepository {
     // 회원가입
     void insertUser(UserVO vo);
 
+    // 아이디 중복확인
+    public int idCheck(String id);
 
 
 }

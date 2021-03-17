@@ -55,6 +55,12 @@ public class UserServiceImpl implements UserService{
         return userRepository.getUser();
     }
 
+    // 아이디 중복 체크
+    @Override
+    public int idCheck(String id) {
+        int cnt = userRepository.idCheck(id);
+        return cnt;
+    }
 
 
 }
