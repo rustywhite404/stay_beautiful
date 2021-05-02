@@ -5,9 +5,25 @@
 
 <!-- 개별 스크립트 추가 -->
 <th:block layout:fragment="script">
-</th:block>
+    <script th:inline="javascript">
+        var msg = /*[[ ${msg} ]]*/;
+        if(msg=="noUser"){
+            swal("LOGIN FAIL!","아이디나 비밀번호가 틀립니다.","error");
+            msg.remove();
+        }else if(msg=="blank"){
+            swal("LOGIN FAIL!","아이디와 비밀번호를 입력해주세요.","error");
+        }else if(msg=="joinSucess"){
+            swal("WELCOME!","회원가입에 성공했습니다.","success");
+        }
 
+    </script>
+</th:block>
 <th:block layout:fragment="content">
+    <style type="text/css">
+        .swal-footer {
+            text-align: center;
+        }
+    </style>
     <div id="login_box">
         <h1>STAY BEAUTIFUL</h1>
         <form action="" method="post">
