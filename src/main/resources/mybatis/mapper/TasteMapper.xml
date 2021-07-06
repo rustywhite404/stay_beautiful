@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.beautiful.stay.mapper.NoteMapper">
+    <!-- 새 글 쓰기 -->
+    <insert id="createNote">
+        INSERT INTO NOTE(NICKNAME, SUBJECT, CONTENTS, WRITER, CATEGORY, TAG, DATE) VALUES (#{nickname}, #{subject}, #{contents}, #{writer}, #{category}, #{tag}, now())
+    </insert>
+
+    <!-- 전체글 보기-->
+    <select id="listNote" resultType="com.beautiful.stay.domain.NoteVO">
+        SELECT * FROM NOTE ORDER BY BNO DESC
+    </select>
+
+    <!-- 글 번호로 글 내용 조회 -->
+    <select id="readNote" resultType="com.beautiful.stay.domain.NoteVO">
+        SELECT * FROM NOTE WHERE BNO = #{bno}
+    </select>
+
+    <!-- 글 수정하기-->
+    <update id="modifyNote">
+        UPDATE NOTE
+        SET SUBJECT = #{subject}, CONTENTS = #{contents}, WRITER = #{writer}, CATEGORY = #{category}, TAG = #{tag}
+        WHERE BNO = #{bno}
+    </update>
+
+    <!-- 글 삭제하기-->
+    <delete id="deleteNote">
+        DELETE FROM NOTE WHERE BNO = #{bno}
+    </delete>
+
+    <!-- 카테고리명에 해당하는 글만 보기-->
+    <select id="categoryNote" resultType="com.beautiful.stay.domain.NoteVO">
+        SELECT * FROM NOTE WHERE CATEGORY = #{category} ORDER BY BNO DESC
+    </select>
+
+    <!-- 게시물 총 갯수 + 검색 적용 -->
+    <select id="searchCount" parameterType="hashMap" resultType="int">
+        select count(bno) from note
+        where subject like concat('%', #{keyword}, '%')
+    </select>
+
+    <!-- 게시물 목록 + 페이징 + 검색 -->
+    <select id="listPageSearch" parameterType="hashMap" resultType="com.beautiful.stay.domain.NoteVO">
+        select * from note order by bno desc limit #{displayPost}, #{postNum}
+    </select>
+
+    <select id="listPaging" parameterType="hashMap" resultType="com.beautiful.stay.domain.NoteVO">
+        select * from note order by bno desc limit #{startIndex}, #{pageSize}
+    </select>
+
+
+</mapper>
