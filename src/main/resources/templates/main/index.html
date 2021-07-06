@@ -24,6 +24,7 @@
             <li th:if="${session.id!=null}"><a th:href="@{/user/logout}">LOGOUT</a></li>
             <li th:if="${session.id==null}"><a th:href="@{/user/join}">JOIN</a></li>
             <li><a th:href="@{/note/list}">NOTE</a></li>
+            <li><a th:href="@{/taste/list}">TASTE</a></li>
             <li><a th:href="@{/admin}">ADMIN</a></li>
         </ul>
     </div>

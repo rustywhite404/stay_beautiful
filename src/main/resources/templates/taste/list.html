@@ -1,10 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/default">
+
+<!-- 개별 스크립트 추가 -->
+<th:block layout:fragment="script">
+</th:block>
+
+<th:block layout:fragment="content">
+    <div id="creat_button">
+        <a th:href="@{/taste/create}"><i class="fas fa-pen-fancy"></i></a>
+    </div>
+    <div id="Note_list_box">
+        <h1>당신의 취향</h1>
+        <div class="category">
+            <span><a th:href="@{/taste/list}">전체</a></span>
+            <span><a th:href="@{/taste/category(type=site)}">사이트</a></span>
+            <span><a th:href="@{/taste/category(type=edit)}">편집</a></span>
+            <span><a th:href="@{/taste/category(type=web)}">웹</a></span>
+            <span><a th:href="@{/taste/category(type=etc)}">기타</a></span>
+        </div>
+
+        <div id="taste_area">
+            <!-- 박스 -->
+            <div th:each="tasteList: ${list}" class="taste_list_box">
+                <div class="taste_thumb">
+                    <img th:src="${tasteList.thumbnail}" />
+                </div>
+                <div class="taste_title">
+                    <ul>
+                        <li><div class="taste_subject"><h2 th:text="${tasteList.subject}">제목</h2></div></li>
+                        <li><div class="taste_s_contents"><h4 th:text="${tasteList.contents}">내용</h4></div></li>
+                    </ul>
+                </div>
+                <div class="taste_info">
+                    <ul>
+                        <li class="no"><small>no.</small><span th:text="${tasteList.bno}"></span></li>
+                        <li class="writer">writter.<span th:text="${tasteList.writer}"></span></li>
+                        <li class="date">2021.06.19</li>
+                        <li class="editDel">
+                            <div th:if="${#strings.equals(session.name,tasteList.writer)}" class="feat_box"><a th:href="@{/note/modify(bno=${tasteList.bno})}">Modify</a> / <a th:href="@{/note/delete(bno=${tasteList.bno})}">Delete</a></div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+
+        </div>
+        <div id="paging_box">
+            <th:block th:if="${pagination.getTotalListCnt() != 0}">
+                <th:block th:if="${pagination.getPage() != 1}">
+                    <a th:href="@{/taste/list(page=1)}">◆</a>
+                    <a th:href="@{/taste/list(page=${pagination.getPreBlock()})}"> ←</a>
+                </th:block>
+            </th:block>
+            <a th:each="page:${#numbers.sequence(pagination.getStartPage(), pagination.getEndPage())}" th:href="@{/taste/list(page=${page})}" th:text="${page}" th:class="${page==pagination.getPage()}?'p_active'">
+            </a>
+            <th:block th:if="${pagination.getTotalListCnt() != 0}">
+                <th:block th:if="${pagination.getPage() != pagination.totalPageCnt}">
+                    <a th:href="@{/taste/list(page=${pagination.getNextBlock})}">→</a>
+                    <a th:href="@{/taste/list(page=${pagination.getTotalPageCnt()})}">◆</a>
+
+                </th:block>
+            </th:block>
+        </div>
+
+    </div>
+
+</th:block>
 </body>
 </html>
